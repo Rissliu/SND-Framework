@@ -1,0 +1,4 @@
+E:\Work\移动平台开发\考勤机\SND.KQ.Service\SNK.KQ.ServiceForm\obj\Debug\ResolveAssemblyReference.cache
+E:\Work\移动平台开发\考勤机\SND.KQ.Service\SNK.KQ.ServiceForm\obj\Debug\SND.KQ.ServiceForm.MainForm.resources
+E:\Work\移动平台开发\考勤机\SND.KQ.Service\SNK.KQ.ServiceForm\obj\Debug\SND.KQ.ServiceForm.Properties.Resources.resources
+E:\Work\移动平台开发\考勤机\SND.KQ.Service\SNK.KQ.ServiceForm\obj\Debug\SNK.KQ.ServiceForm.csproj.GenerateResource.Cache

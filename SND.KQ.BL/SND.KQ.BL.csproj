@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4C1919A0-A853-459F-B2E1-69A7483690A3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SND.KQ.BL</RootNamespace>
+    <AssemblyName>SND.KQ.BL</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkSubset>
+    </TargetFrameworkSubset>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="SND.DA.DataAccessHelper, Version=2.0.4467.29353, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\frameworkbak\Framework\SND.DA.DataAccessHelper\bin\Debug\SND.DA.DataAccessHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ComFunc.cs" />
+    <Compile Include="CopyDataFun.cs" />
+    <Compile Include="DataCollection.cs" />
+    <Compile Include="EntityData\RostingData.cs" />
+    <Compile Include="EntityData\CopyData.cs" />
+    <Compile Include="EntityData\DevInfo.cs" />
+    <Compile Include="EntityData\RostInfo.cs" />
+    <Compile Include="EntityData\UserInfo.cs" />
+    <Compile Include="InputUserFeatureBL.cs" />
+    <Compile Include="MachineFactory.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SysConfig.cs" />
+    <Compile Include="SysData.cs" />
+    <Compile Include="ThreadManager.cs" />
+    <Compile Include="ThreadProcess.cs" />
+    <Compile Include="VerifyProcess.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SND.KQ.DAL\SND.KQ.DAL.csproj">
+      <Project>{9A09E440-22BB-40E4-BB44-E09DC5017D95}</Project>
+      <Name>SND.KQ.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SND.KQ.Log\SND.KQ.Log.csproj">
+      <Project>{C7A094F0-B253-465A-A7B1-C351657E6B08}</Project>
+      <Name>SND.KQ.Log</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SND.KQ.Machine\SND.KQ.Machines.csproj">
+      <Project>{4586252A-8A51-48DC-B027-563C4D36E3C8}</Project>
+      <Name>SND.KQ.Machines</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SND.KQ.DAL</name>
+    </assembly>
+    <members>
+        <member name="T:SND.KQ.DAL.Well.Common">
+            <summary>
+            Summary description for Common.
+            </summary>
+        </member>
+        <member name="M:SND.KQ.DAL.Well.Common.GetDataConnection(System.String,SND.DA.DataAccessHelper.DataSourceType)">
+            <summary>
+            Get a DataConnection instance for the given connection string and 
+            data source type.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:SND.KQ.DAL.FRAS.Common">
+            <summary>
+            Summary description for Common.
+            </summary>
+        </member>
+        <member name="M:SND.KQ.DAL.FRAS.Common.GetDataConnection(System.String,SND.DA.DataAccessHelper.DataSourceType)">
+            <summary>
+            Get a DataConnection instance for the given connection string and 
+            data source type.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:SND.KQ.DAL.DataSets.SubscriptionDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:SND.KQ.DAL.DataSets.SubscriptionDataSet.SubscriptionDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:SND.KQ.DAL.DataSets.SubscriptionDataSet.EndpointReferenceDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:SND.KQ.DAL.DataSets.SubscriptionDataSet.FilterNamespaceDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:SND.KQ.DAL.DataSets.SubscriptionDataSet.SubscriptionRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:SND.KQ.DAL.DataSets.SubscriptionDataSet.EndpointReferenceRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:SND.KQ.DAL.DataSets.SubscriptionDataSet.FilterNamespaceRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:SND.KQ.DAL.DataSets.SubscriptionDataSet.SubscriptionRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:SND.KQ.DAL.DataSets.SubscriptionDataSet.EndpointReferenceRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:SND.KQ.DAL.DataSets.SubscriptionDataSet.FilterNamespaceRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="M:SND.KQ.DAL.FRAS.KQInfo.CreatUserFeature(System.Int32@,System.String,System.String)">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:SND.KQ.DAL.FRAS.KQInfo.CreatUserInfo(System.String,System.String,System.Int32,System.Int32,System.Int32,System.String,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:SND.KQ.DAL.FRAS.KQInfo.GetCardInfoByUserId(System.String)">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:SND.KQ.DAL.FRAS.KQInfo.CreatUserCard(System.String,System.String)">
+            <summary>
+            </summary>
+        </member>
+    </members>
+</doc>

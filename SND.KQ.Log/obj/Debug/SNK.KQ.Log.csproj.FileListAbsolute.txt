@@ -1,0 +1,5 @@
+E:\Work\移动平台开发\考勤机\SND.KQ.Service\SNK.KQ.Log\bin\Debug\SNK.KQ.Log.dll
+E:\Work\移动平台开发\考勤机\SND.KQ.Service\SNK.KQ.Log\bin\Debug\SNK.KQ.Log.pdb
+E:\Work\移动平台开发\考勤机\SND.KQ.Service\SNK.KQ.Log\obj\Debug\ResolveAssemblyReference.cache
+E:\Work\移动平台开发\考勤机\SND.KQ.Service\SNK.KQ.Log\obj\Debug\SNK.KQ.Log.dll
+E:\Work\移动平台开发\考勤机\SND.KQ.Service\SNK.KQ.Log\obj\Debug\SNK.KQ.Log.pdb

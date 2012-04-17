@@ -1,0 +1,2 @@
+"..\..\Tools\AdaImport\bin\Release\AdaImport.exe" -i DataCommands.xml -n NGX.Eventing.DAO -dbt SqlClient -dbc "Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=NGX_Eventing_DB;Data Source=localhost" -oc "."
+pause

@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dataAccessDefinition xmlns="http://schemas.snd.com/DistriX/Development/Framework/DotNet/AgnosticDataAccess/2004/05/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schemas.snd.com/DistriX/Development/Framework/DotNet/AgnosticDataAccess/2004/05/ 
+	http://schemas.snd.com/DistriX/Development/Framework/DotNet/AgnosticDataAccess/2004/05/" name="KQ.DAO" rdbmsName="SqlServer2005" method="sqlClient">
+
+
+  <groups>
+
+    <group name="GetUserInfoByName">
+      <commands>
+        <command name="GetUserInfoByName" type="text" returns="dataTable">
+          <parameters>
+            <parameter name="UserName" type="string"/>
+          </parameters>
+          <commandText>
+            select A.*,B.featurePath,B.photoPath,c.cardId as cardNo from UserInfo A
+            left join FeatureInfo B on A.featureId=B.Id
+            left join UserCard C on A.userId=c.userId Where A.userName = <param name="UserName"/>
+          </commandText>
+        </command>
+      </commands>
+    </group>
+
+    <group name="GetUserInfoById">
+      <commands>
+        <command name="GetUserInfoById" type="text" returns="dataTable">
+          <parameters>
+            <parameter name="UserId" type="string"/>
+          </parameters>
+          <commandText>
+            select A.*,B.featurePath,B.photoPath,c.cardId as cardNo from UserInfo A
+            left join FeatureInfo B on A.featureId=B.Id
+            left join UserCard C on A.userId=c.userId Where A.userId = <param name="UserId"/>
+          </commandText>
+        </command>
+      </commands>
+    </group>
+
+    
+    <group name="GetCardInfoByUserId">
+      <commands>
+        <command name="GetCardInfoByUserId" type="text" returns="dataTable">
+          <parameters>
+            <parameter name="UserId" type="string"/>
+          </parameters>
+          <commandText>
+            Select * from UserCard Where userId = <param name="UserId"/>
+          </commandText>
+        </command>
+      </commands>
+    </group>
+
+    <group name="UserInfo">
+      <commands>
+        <command name="GetUserInfo" type="text" returns="dataTable">
+          <commandText>
+            select A.*,B.featurePath,B.photoPath,c.cardId as cardNo from UserInfo A
+            left join FeatureInfo B on A.featureId=B.Id
+            left join UserCard C on A.userId=c.userId
+          </commandText>
+        </command>
+
+        <command name="UpdateUserInfoFeatureInfo" type="text" returns="nothing">
+          <parameters>
+            <parameter name="UserId" type="string"/>
+            <parameter name="FeatureId" type="int32"/>
+          </parameters>
+          <commandText>
+            Update UserInfo set featureId=<param name="FeatureId"/> WHERE userId = <param name="UserId"/>
+          </commandText>
+        </command>
+
+        <command name="UpdateUserCardInfo" type="text" returns="nothing">
+          <parameters>
+            <parameter name="UserId" type="string"/>
+            <parameter name="CardId" type="string"/>
+          </parameters>
+          <commandText>
+            Update UserCard set cardId=<param name="CardId"/> WHERE userId = <param name="UserId"/>
+          </commandText>
+        </command>
+        <autoCommand name="CreatUserFeature" type="insert" table="FeatureInfo"/>
+        <autoCommand name="CreatUserCard" type="insert" table="UserCard"/>
+        <autoCommand name="CreatUserInfo" type="insert" table="UserInfo"/>
+      </commands>
+    </group>
+
+    <group name="DevInfo">
+      <commands>
+        <command name="GetDevInfo" type="text" returns="dataTable">
+          <commandText>
+            SELECT * FROM DevInfo WHERE flag=1
+          </commandText>
+        </command>
+      </commands>
+    </group>
+    
+    <group name="RankInfo">
+      <commands>
+        <command name="GetRankInfo" type="text" returns="dataTable">
+          <commandText>
+            SELECT ID,Rank FROM RankInfo
+          </commandText>
+        </command>
+      </commands>
+    </group>
+    
+    <group name="CopyData">
+      <commands>
+        <command name="GetCopyData" type="text" returns="dataTable">
+          <commandText>
+            SELECT a.userid, a.username, c.featurePath, c.photoPath, b.cardId, a.copyType, a.flag
+            FROM userinfo a,usercard b, featureinfo c
+            WHERE a.featureid is not null  AND a.userid=b.userid  AND a.featureid = c.ID
+            AND a.flag!=99 ORDER BY b.ID
+          </commandText>
+        </command>
+      </commands>
+    </group>
+
+   
+    <group name="FirstWorkLog">
+      <commands>
+        <command name="GetFirstWorkLog" type="text" returns="dataSet">
+          <parameters>
+            <parameter name="UserId" type="string"/>
+            <parameter name="DevNum" type="int32"/>
+          </parameters>
+          <commandText>
+            select top 1 * from accessLog where userid= <param name="UserId"/> and devNum=<param name="DevNum"/> order by ID desc
+            select top 1 * from workDuration where userid= <param name="UserId"/>  and devNum=<param name="DevNum"/>  and durations ='NULL' and duration=0 order by ID desc
+        </commandText>
+        </command>
+      </commands>
+    </group>
+
+
+    <group name="FirstWorkDuration">
+      <commands>
+        <command name="GetFirstWorkDuration" type="text" returns="dataTable">
+          <parameters>
+            <parameter name="UserId" type="string"/>
+            <parameter name="Date" type="string"/> 
+            <parameter name="DevNum" type="int32"/>
+          </parameters>
+          <commandText>
+            select top 1 * from workDuration where userid= <param name="UserId"/>  and devNum=<param name="DevNum"/>
+            and durations is not null and duration>0  and date= <param name="Date"/> order by ID desc
+          </commandText>
+        </command>
+      </commands>
+    </group>
+
+    <group name="GetWorkDurationByUserId">
+      <commands>
+        <command name="GetWorkDurationByUserId" type="text" returns="dataTable">
+          <parameters>
+            <parameter name="UserId" type="string"/>
+          </parameters>
+          <commandText>
+            select top 1 * from workDuration where userid= <param name="UserId"/>  and devNum in (1,2) and durations ='NULL' and duration=0 order by ID desc
+          </commandText>
+        </command>
+      </commands>
+    </group>
+
+
+    <group name="GetWorkDurationByRosteId">
+      <commands>
+        <command name="GetWorkDurationByRosteId" type="text" returns="dataTable">
+          <parameters>
+            <parameter name="Id" type="string"/>
+          </parameters>
+          <commandText>
+            select w.ID, u.copyType, w.devNum from userInfo u, workDuration w where u.userid=w.userid and w.duration=0 and w.durations ='NULL' and  w.devNum!=4 and w.bak4= <param name="Id"/>
+          </commandText>
+        </command>
+      </commands>
+    </group>
+
+    <group name="GetWorkDurationByUserId2">
+      <commands>
+        <command name="GetWorkDurationByUserId2" type="text" returns="dataTable">
+          <parameters>
+            <parameter name="UserId" type="string"/>
+          </parameters>
+          <commandText>
+            select top 1 bak4 as rostID from workDuration where userid= <param name="UserId"/> and durations = 'NULL' and duration=0 order by ID desc
+          </commandText>
+        </command>
+      </commands>
+    </group>
+
+    <group name="GetUserWorkDuration">
+      <commands>
+        <command name="GetUserWorkDuration" type="text" returns="dataTable">
+          <commandText>
+            select w.ID, w.bak2 from userInfo u, workDuration w where
+            u.userid=w.userid and w.duration=0 and w.durations ='NULL'
+            and  (w.devNum=4 or (w.devNum in (1,2) and u.copyType in (3, 4, 9)))
+          </commandText>
+        </command>
+      </commands>
+    </group>
+
+    <group name="GetRostingById">
+      <commands>
+        <command name="GetRostingById" type="text" returns="dataTable">
+          <parameters>
+            <parameter name="Id" type="int32"/>
+          </parameters>
+          <commandText>
+            select r.* from  rostering r where r.ID = <param name="Id"/>
+          </commandText>
+        </command>
+      </commands>
+    </group>
+
+    <group name="GetUserRostingByUserId">
+      <commands>
+        <command name="GetUserRostingByUserId" type="text" returns="dataTable">
+          <parameters>
+            <parameter name="UserId" type="string"/>
+          </parameters>
+          <commandText>
+            select r.* from userInfo u,rostering r where u.rosteringId=r.ID and u.userId= <param name="UserId"/>
+          </commandText>
+        </command>
+      </commands>
+    </group>
+
+
+
+    <group name="GetWorkDurationByUserIdAndDevNum">
+      <commands>
+        <command name="GetWorkDurationByUserIdAndDevNum" type="text" returns="dataTable">
+          <parameters>
+            <parameter name="UserId" type="string"/>
+            <parameter name="DevNum" type="int32"/>
+          </parameters>
+          <commandText>
+            select top 1 * from workDuration where userid= <param name="UserId"/>  and devNum = <param name="DevNum"/> and durations ='NULL' and duration=0 order by ID desc
+          </commandText>
+        </command>
+      </commands>
+    </group>
+    
+    
+
+    <group name="GetAccessLogByUserId">
+      <commands>
+        <command name="GetAccessLogByUserId" type="text" returns="dataTable">
+          <parameters>
+            <parameter name="UserId" type="string"/>
+          </parameters>
+          <commandText>
+            select top 1 * from accessLog where userid= <param name="UserId"/> and devNum in (1,2) and accessFlag=0 and recResult=1 order by ID desc
+          </commandText>
+        </command>
+      </commands>
+    </group>
+
+    <group name="GetAccessLogByUserIdAndDevNum">
+      <commands>
+        <command name="GetAccessLogByUserIdAndDevNum" type="text" returns="dataTable">
+          <parameters>
+            <parameter name="UserId" type="string"/>
+            <parameter name="DevNum" type="int32"/>
+          </parameters>
+          <commandText>
+            select top 1 * from accessLog where userid=<param name="UserId"/> and devNum=<param name="DevNum"/> and accessFlag=0 and recResult=1 order by ID desc
+          </commandText>
+        </command>
+      </commands>
+    </group>
+
+    <group name="GetAllRostInfo">
+      <commands>
+        <command name="GetAllRostInfo" type="text" returns="dataTable">
+          <commandText>
+            select * from rostering order by ID
+          </commandText>
+        </command>
+      </commands>
+    </group>
+
+    <group name="GetPreRostInfoByUserId">
+      <commands>
+        <command name="GetPreRostInfoByUserId" type="text" returns="dataTable">
+          <parameters>
+            <parameter name="UserId" type="string"/>
+          </parameters>
+          <commandText>
+            select *  from PreRostering where userid=<param name="UserId"/>
+          </commandText>
+        </command>
+      </commands>
+    </group>
+
+    <group name="UpdateWorkDurationRecord">
+      <commands>
+        <command name="UpdateWorkDurationRecord" type="text" returns="nothing">
+        <description>UpdateWorkDurationRecord</description>
+        <parameters>
+          <parameter name="Durations" type="string"/>
+          <parameter name="duration" type="int64"/>
+          <parameter name="MulDur" type="int64"/>
+          <parameter name="Bak3" type="string"/>
+          <parameter name="ID" type="int32"/>
+        </parameters>
+        <commandText>
+          update workDuration set 
+          durations= <param name="Durations"/> ,
+          duration= <param name="duration"/>,
+          mulDur=<param name="MulDur"/>,
+          bak3=<param name="Bak3"/>
+          where ID=<param name="ID"/>
+        </commandText>
+       </command>
+
+        <command name="UpdateWorkDurations" type="text" returns="nothing">
+          <description>UpdateWorkDurations</description>
+          <parameters>
+            <parameter name="ID" type="int32"/>
+          </parameters>
+          <commandText>
+            update workDuration set durations='00:00:00', duration=-1
+            where ID=<param name="ID"/>
+          </commandText>
+        </command>
+      </commands>
+    </group>
+
+    <group name="UpdateWorkDurationRecordAndBak1">
+      <commands>
+        <command name="UpdateWorkDurationRecordAndBak1" type="text" returns="nothing">
+          <description>UpdateWorkDurationRecordAndBak1</description>
+          <parameters>
+            <parameter name="Durations" type="string"/>
+            <parameter name="Duration" type="int64"/>
+            <parameter name="MulDur" type="int64"/>
+            <parameter name="Bak1" type="string"/>
+            <parameter name="Bak3" type="string"/>
+            <parameter name="ID" type="int32"/>
+          </parameters>
+          <commandText>
+            update workDuration set
+            durations= <param name="Durations"/> ,
+            duration= <param name="Duration"/>,
+            mulDur=<param name="MulDur"/>,
+            bak1=<param name="Bak1"/>
+            bak3=<param name="Bak3"/>
+            where ID=<param name="ID"/>
+          </commandText>
+        </command>
+      </commands>
+    </group>
+
+
+    <group name="AddWorkDurationRecord">
+      <commands>
+        <command name="AddWorkDurationRecord" type="text" returns="nothing">
+          <description>AddWorkDurationRecord</description>
+          <parameters>
+            <parameter name="UserId" type="string"/>
+            <parameter name="Date" type="string"/>
+            <parameter name="AccessNum" type="int32"/>
+            <parameter name="Durations" type="string"/>
+            <parameter name="Duration" type="int64"/>
+            <parameter name="DevNum" type="int32"/>
+            <parameter name="MulDur" type="int64"/>
+            <parameter name="NightWork" type="int32"/>
+            <parameter name="Bak1" type="string"/>
+            <parameter name="Bak2" type="string"/>
+            <parameter name="Bak3" type="string"/>
+            <parameter name="Bak4" type="string"/>
+          </parameters>
+          <commandText>
+            Insert into workDuration values
+            (<param name="UserId"/>,
+            <param name="Date"/>,
+            <param name="AccessNum"/>,
+            <param name="Durations"/>,
+            <param name="Duration"/>,
+            <param name="DevNum"/>,
+            <param name="MulDur"/>,
+            <param name="NightWork"/>,
+            <param name="Bak1"/>,
+            <param name="Bak2"/>,
+            <param name="Bak3"/>,
+            <param name="Bak4"/>)
+          </commandText>
+        </command>
+      </commands>
+    </group>
+
+    <group name="AddAccessLog">
+      <commands>
+        <command name="AddAccessLog" type="text" returns="nothing">
+          <parameters>
+            <parameter name="UserId" type="string"/>
+            <parameter name="DateTime" type="string"/>
+            <parameter name="Date" type="string"/>
+            <parameter name="InOrOut" type="int32"/>
+            <parameter name="Access" type="int32"/>
+            <parameter name="State" type="int32"/>
+            <parameter name="DevNum" type="int32"/>
+            <parameter name="PhotoPath" type="string"/>
+          </parameters>
+          <commandText>
+           insert into AccessLog values(
+           <param name="UserId"/>,
+          <param name="DateTime"/>,
+          <param name="Date"/>,
+          <param name="InOrOut"/>,
+          <param name="Access"/>,
+          <param name="State"/>,
+          <param name="DevNum"/>,
+          <param name="PhotoPath"/>,
+           NULL,NULL,NULL,NULL)
+          </commandText>
+        </command>
+      </commands>
+    </group>
+
+    <group name="GetDeptInfo">
+      <commands>
+        <command name="GetDeptInfo" type="text" returns="dataTable">
+          <commandText>
+            SELECT * FROM DeptInfo
+          </commandText>
+        </command>
+      </commands>
+    </group>
+
+  </groups>
+</dataAccessDefinition>
