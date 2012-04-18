@@ -28,6 +28,22 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:SND.KQ.DAL.FRAS.KQInfo.CreatUserFeature(System.Int32@,System.String,System.String)">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:SND.KQ.DAL.FRAS.KQInfo.CreatUserInfo(System.String,System.String,System.Int32,System.Int32,System.Int32,System.String,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:SND.KQ.DAL.FRAS.KQInfo.GetCardInfoByUserId(System.String)">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:SND.KQ.DAL.FRAS.KQInfo.CreatUserCard(System.String,System.String)">
+            <summary>
+            </summary>
+        </member>
         <member name="T:SND.KQ.DAL.DataSets.SubscriptionDataSet">
              <summary>
             Represents a strongly typed in-memory cache of data.
@@ -76,22 +92,6 @@
         <member name="T:SND.KQ.DAL.DataSets.SubscriptionDataSet.FilterNamespaceRowChangeEvent">
              <summary>
             Row event argument class
-            </summary>
-        </member>
-        <member name="M:SND.KQ.DAL.FRAS.KQInfo.CreatUserFeature(System.Int32@,System.String,System.String)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:SND.KQ.DAL.FRAS.KQInfo.CreatUserInfo(System.String,System.String,System.Int32,System.Int32,System.Int32,System.String,System.Int32,System.Int32,System.Int32,System.Int32)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:SND.KQ.DAL.FRAS.KQInfo.GetCardInfoByUserId(System.String)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:SND.KQ.DAL.FRAS.KQInfo.CreatUserCard(System.String,System.String)">
-            <summary>
             </summary>
         </member>
     </members>

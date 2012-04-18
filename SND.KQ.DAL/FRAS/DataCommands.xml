@@ -35,7 +35,7 @@
       </commands>
     </group>
 
-    
+
     <group name="GetCardInfoByUserId">
       <commands>
         <command name="GetCardInfoByUserId" type="text" returns="dataTable">
@@ -93,7 +93,7 @@
         </command>
       </commands>
     </group>
-    
+
     <group name="RankInfo">
       <commands>
         <command name="GetRankInfo" type="text" returns="dataTable">
@@ -103,7 +103,7 @@
         </command>
       </commands>
     </group>
-    
+
     <group name="CopyData">
       <commands>
         <command name="GetCopyData" type="text" returns="dataTable">
@@ -117,7 +117,7 @@
       </commands>
     </group>
 
-   
+
     <group name="FirstWorkLog">
       <commands>
         <command name="GetFirstWorkLog" type="text" returns="dataSet">
@@ -128,7 +128,7 @@
           <commandText>
             select top 1 * from accessLog where userid= <param name="UserId"/> and devNum=<param name="DevNum"/> order by ID desc
             select top 1 * from workDuration where userid= <param name="UserId"/>  and devNum=<param name="DevNum"/>  and durations ='NULL' and duration=0 order by ID desc
-        </commandText>
+          </commandText>
         </command>
       </commands>
     </group>
@@ -139,7 +139,7 @@
         <command name="GetFirstWorkDuration" type="text" returns="dataTable">
           <parameters>
             <parameter name="UserId" type="string"/>
-            <parameter name="Date" type="string"/> 
+            <parameter name="Date" type="string"/>
             <parameter name="DevNum" type="int32"/>
           </parameters>
           <commandText>
@@ -243,8 +243,8 @@
         </command>
       </commands>
     </group>
-    
-    
+
+
 
     <group name="GetAccessLogByUserId">
       <commands>
@@ -299,23 +299,23 @@
     <group name="UpdateWorkDurationRecord">
       <commands>
         <command name="UpdateWorkDurationRecord" type="text" returns="nothing">
-        <description>UpdateWorkDurationRecord</description>
-        <parameters>
-          <parameter name="Durations" type="string"/>
-          <parameter name="duration" type="int64"/>
-          <parameter name="MulDur" type="int64"/>
-          <parameter name="Bak3" type="string"/>
-          <parameter name="ID" type="int32"/>
-        </parameters>
-        <commandText>
-          update workDuration set 
-          durations= <param name="Durations"/> ,
-          duration= <param name="duration"/>,
-          mulDur=<param name="MulDur"/>,
-          bak3=<param name="Bak3"/>
-          where ID=<param name="ID"/>
-        </commandText>
-       </command>
+          <description>UpdateWorkDurationRecord</description>
+          <parameters>
+            <parameter name="Durations" type="string"/>
+            <parameter name="Duration" type="int64"/>
+            <parameter name="MulDur" type="int64"/>
+            <parameter name="Bak3" type="string"/>
+            <parameter name="ID" type="int32"/>
+          </parameters>
+          <commandText>
+            update workDuration set
+            durations= <param name="Durations"/> ,
+            duration= <param name="Duration"/>,
+            mulDur=<param name="MulDur"/>,
+            bak3=<param name="Bak3"/>
+            where ID=<param name="ID"/>
+          </commandText>
+        </command>
 
         <command name="UpdateWorkDurations" type="text" returns="nothing">
           <description>UpdateWorkDurations</description>
@@ -347,7 +347,7 @@
             durations= <param name="Durations"/> ,
             duration= <param name="Duration"/>,
             mulDur=<param name="MulDur"/>,
-            bak1=<param name="Bak1"/>
+            bak1=<param name="Bak1"/>,
             bak3=<param name="Bak3"/>
             where ID=<param name="ID"/>
           </commandText>
@@ -407,16 +407,16 @@
             <parameter name="PhotoPath" type="string"/>
           </parameters>
           <commandText>
-           insert into AccessLog values(
-           <param name="UserId"/>,
-          <param name="DateTime"/>,
-          <param name="Date"/>,
-          <param name="InOrOut"/>,
-          <param name="Access"/>,
-          <param name="State"/>,
-          <param name="DevNum"/>,
-          <param name="PhotoPath"/>,
-           NULL,NULL,NULL,NULL)
+            insert into AccessLog values(
+            <param name="UserId"/>,
+            <param name="DateTime"/>,
+            <param name="Date"/>,
+            <param name="InOrOut"/>,
+            <param name="Access"/>,
+            <param name="State"/>,
+            <param name="DevNum"/>,
+            <param name="PhotoPath"/>,
+            NULL,NULL,NULL,NULL)
           </commandText>
         </command>
       </commands>

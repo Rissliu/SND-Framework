@@ -342,13 +342,10 @@ namespace SND.KQ.DAL.FRAS
 
             Command cmdBuilder = mConnection.Commands.GetCommand(CommandEnumeration.UpdateWorkDurationRecord);
             cmdBuilder.Parameters["Durations"].Value = durations;
-            cmdBuilder.Parameters["duration"].Value = duration;
+            cmdBuilder.Parameters["Duration"].Value = duration;
             cmdBuilder.Parameters["Bak3"].Value = bak3;
             cmdBuilder.Parameters["ID"].Value = id;
-            if (mulDur != 0)
-            {
-                cmdBuilder.Parameters["MulDur"].Value = mulDur;
-            }
+            cmdBuilder.Parameters["MulDur"].Value = mulDur;
             if (mConnection.GetConnection().State == ConnectionState.Closed)
             {
                 mConnection.Open();
@@ -379,14 +376,11 @@ namespace SND.KQ.DAL.FRAS
 
             Command cmdBuilder = mConnection.Commands.GetCommand(CommandEnumeration.UpdateWorkDurationRecordAndBak1);
             cmdBuilder.Parameters["Durations"].Value = durations;
-            cmdBuilder.Parameters["duration"].Value = duration;
+            cmdBuilder.Parameters["Duration"].Value = duration;
             cmdBuilder.Parameters["Bak1"].Value = bak1;
             cmdBuilder.Parameters["Bak3"].Value = bak3;
             cmdBuilder.Parameters["ID"].Value = id;
-            if (mulDur != 0)
-            {
-                cmdBuilder.Parameters["MulDur"].Value = mulDur;
-            }
+            cmdBuilder.Parameters["MulDur"].Value = mulDur;
             if (mConnection.GetConnection().State == ConnectionState.Closed)
             {
                 mConnection.Open();

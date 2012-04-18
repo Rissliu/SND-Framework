@@ -54,6 +54,7 @@
     <Compile Include="InputUserFeatureBL.cs" />
     <Compile Include="MachineFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SwipeFaileHandle.cs" />
     <Compile Include="SysConfig.cs" />
     <Compile Include="SysData.cs" />
     <Compile Include="ThreadManager.cs" />

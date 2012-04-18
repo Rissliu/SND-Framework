@@ -27,7 +27,7 @@ namespace SND.KQ.BL
                     return;
                 }
 
-                UserInfo uinfo = DataCollection.UserInfos[arg.lUserID.ToString()];
+                UserInfo uinfo = DataCollection.UserInfos[ ComFunc.GetUserIdString(arg.lUserID.ToString())];
                 // 识别成功
                 if (arg.lVerifyResult == 1)
                 {
@@ -108,6 +108,12 @@ namespace SND.KQ.BL
                 //记录日志+
                 SetCueInfo(uinfo.UserName, inOroOut, state, arg.lVerifyResult, arg.lUserData, arg.lUserID.ToString());
 
+
+                // 如果刷卡失败，进行统计失败次数，并决定是否启动模板录入功能
+                if (arg.lVerifyResult != 1)
+                {
+                    SwipeFaileHandle.Failed(uinfo, dev);
+                }
             }
         }
 
@@ -330,6 +336,7 @@ namespace SND.KQ.BL
                         DAccess.UpdateWorkDurationRecord(strDuration, System.Convert.ToInt64(timsSpan.TotalSeconds), now.ToString("yyyy-MM-dd HH:mm:ss"), System.Convert.ToInt32(durId), 1);
 
                         LogManager.LogSys(string.Format("用户[{0}]生活区出勤时长[{1}]，更新工时记录！", user.UserName, timsSpan.TotalSeconds));
+                        return;
                     }
 
 

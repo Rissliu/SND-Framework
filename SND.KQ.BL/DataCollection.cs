@@ -18,6 +18,9 @@ namespace SND.KQ.BL
 
         public static SND.KQ.DAL.Well.WellInfo DAccessWell = null;
 
+        // 打卡计数器，统计一个人连续刷卡次数
+        public static Dictionary<string, List<DateTime>> SwipeCardCount = new Dictionary<string, List<DateTime>>();
+
         // 用户信息集合
         public static Dictionary<string, UserInfo> UserInfos = new Dictionary<string, UserInfo>();
 
@@ -46,8 +49,6 @@ namespace SND.KQ.BL
 
                 Common.Initialize(Config.FRASConnectionString, SND.DA.DataAccessHelper.DataSourceType.SqlClient);
 
-                KQInfo DAccess = new KQInfo(Common.GetDataConnection(Config.FRASConnectionString, SND.DA.DataAccessHelper.DataSourceType.SqlClient));
-
 
                 // 获取设备信息
                 CopyDataFun.CopyDevData();
@@ -58,33 +59,6 @@ namespace SND.KQ.BL
                 // 获取班次信息
                 CopyDataFun.CopyRostingData();
 
-
-                //    System.Data.DataTable dtRosting = DAccess.GetAllRostInfo();
-                //    if (dtRosting != null)
-                //    {
-                //        foreach (System.Data.DataRow row in dtRosting.Rows)
-                //        {
-                //            RostingData rosteData = new RostingData();
-                //            rosteData.ID = row["ID"].ToString();
-                //            rosteData.bcName = row["bcName"].ToString();
-                //            rosteData.startTime = row["startTime"].ToString();
-                //            rosteData.endTime = row["endTime"].ToString();
-                //            rosteData.earlyRange = row["earlyRange"] == null ? string.Empty : row["earlyRange"].ToString();
-                //            rosteData.lateRange = row["lateRange"] == null ? string.Empty : row["lateRange"].ToString();
-                //            rosteData.realStartTime = row["realStartTime"] == null ? string.Empty : row["realStartTime"].ToString();
-                //            rosteData.realStartTime = row["realEndTime"] == null ? string.Empty : row["realEndTime"].ToString();
-                //            rosteData.realStartTime = row["flag"] == null ? string.Empty : row["flag"].ToString();
-                //            rosteData.realStartTime = row["multType"] == null ? string.Empty : row["multType"].ToString();
-                //            rosteData.realStartTime = row["nextID"] == null ? string.Empty : row["nextID"].ToString();
-                //            rosteData.realStartTime = row["mulripleDur"] == null ? string.Empty : row["mulripleDur"].ToString();
-                //            rosteData.realStartTime = row["nightWork"] == null ? string.Empty : row["nightWork"].ToString();
-                //            rosteData.realStartTime = row["bak1"] == null ? string.Empty : row["bak1"].ToString();
-                //            rosteData.realStartTime = row["bak2"] == null ? string.Empty : row["bak2"].ToString();
-                //            rosteData.realStartTime = row["bak3"] == null ? string.Empty : row["bak3"].ToString();
-                //            rosteData.realStartTime = row["bak4"] == null ? string.Empty : row["bak4"].ToString();
-                //            RostingList.Add(System.Convert.ToInt32(rosteData.ID), rosteData);
-                //        }
-                //    }
             }
             catch (Exception ex)
             {

@@ -40,6 +40,7 @@ namespace SND.KQ.BL
 
                     IMachine m =MachineFactory.GetMachine(DataCollection.Config.MachineType,dev.DevIp,dev.DevPort,dev.DevUserName,dev.DevPassWord,dev.AntNo);
                     m.EventVerifyUser += new EventHandler(mprocess.VerifyUserCallBack);
+                    m.OnEInputFeaturer = new EventHandler(SwipeFaileHandle.InputUserFeatureCallBack);
                     DataCollection.MachineList.Add(antNum,m);
                 }
                 

@@ -132,6 +132,9 @@ namespace SND.KQ.BL
                 {
                     string copyType = row["copyType"].ToString();
                     string devNum = row["devNum"].ToString();
+
+                    LogManager.LogSys(devNum);
+
                     if (copyType == "3" || copyType == "4" && (devNum == "1" || devNum == "2"))
                     {
                         //此时为队长副队长技术员下井，则无班次限制，不在此处做自动签退
@@ -168,7 +171,7 @@ namespace SND.KQ.BL
                     return;
                 }
                 List<string> list = new List<string>();
-                DateTime now = DateTime.Now.AddHours(-1);
+                DateTime now = DateTime.Now.AddHours(-9);
                 foreach (DataRow row in dt.Rows)
                 {
                     DateTime startTime = System.Convert.ToDateTime(row["bak2"]);

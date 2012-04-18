@@ -20,7 +20,10 @@ namespace SND.KQ.BL
         public static int USERID_OFFSET_COUNT= 6210000;
 
 
-       
+        // 模板保存路径
+        public static string TemplateFeaturePath = @"C:\Program Files\SND\FRAS\Feature";
+        // 照片保存路径
+        public static string TemplatePhotoPath = @"C:\Program Files\SND\FRAS\\Picture";
 
     }
 

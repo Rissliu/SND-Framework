@@ -16,10 +16,8 @@ namespace SND.KQ.BL
         private DataSourceType mDataSourceType;
         private KQInfo DAccess = null;
         private IMachine Machine = null;
-        private string TemplateFeaturePath = @"C:\Program Files\SND\FRAS\Feature";
-        private string TemplatePhotoPath = @"C:\Program Files\SND\FRAS\\Picture";
         public delegate void CompleteProcess(bool result,string msg);
-
+       
         public CompleteProcess CompleteHandler=null;
 
         public InputUserFeatureBL(String strConnectionString)
@@ -78,7 +76,7 @@ namespace SND.KQ.BL
                 arg.UserId = System.Convert.ToInt32(UserInfo.UserId);
                 arg.UserName = UserInfo.UserName;
                 arg.UserType = UserInfo.Type;
-                arg.CardNo = UserInfo.CardNo;
+                arg.CardNo = UserInfo.CardNo == string.Empty ? "0000000000" : UserInfo.CardNo;
                 arg.DeptId = System.Convert.ToInt32(UserInfo.DeptId);
                 arg.lPhotoType = 0;
                 arg.lPhotoLen=0;
@@ -89,7 +87,7 @@ namespace SND.KQ.BL
         }
         public bool SetTemplate(int userId)
         {
-            Machine.InputFeature(userId, 1);
+            Machine.InputFeature(userId, 0);
             return true;
         }
 
@@ -101,16 +99,19 @@ namespace SND.KQ.BL
             if (arg.lOpCode == 0)
             {
                isSucc=true;
-               if (!Directory.Exists(TemplateFeaturePath))
+               if (!Directory.Exists(SysData.TemplateFeaturePath))
                {
-                   Directory.CreateDirectory(TemplateFeaturePath);
+                   Directory.CreateDirectory(SysData.TemplateFeaturePath);
                }
-               if (!Directory.Exists(TemplatePhotoPath))
+               if (!Directory.Exists(SysData.TemplatePhotoPath))
                {
-                   Directory.CreateDirectory(TemplatePhotoPath);
+                   Directory.CreateDirectory(SysData.TemplatePhotoPath);
                }
-               string featurePath=Path.Combine(TemplateFeaturePath,ComFunc.GetPhotoPath(arg.lUserID.ToString(),"fea","dat"));
-               string photoPath=Path.Combine(TemplatePhotoPath,ComFunc.GetPhotoPath(arg.lUserID.ToString(),"Picture","jpg"));
+               string userId = ComFunc.GetUserIdString((arg.lUserID > SysData.USERID_OFFSET_COUNT ? arg.lUserID - SysData.USERID_OFFSET_COUNT : arg.lUserID).ToString());
+
+                //.Length < 4 ? "00" + arg.lUserID.ToString() : arg.lUserID.ToString();
+               string featurePath = Path.Combine(SysData.TemplateFeaturePath, ComFunc.GetPhotoPath(userId, "fea", "dat"));
+               string photoPath = Path.Combine(SysData.TemplatePhotoPath, ComFunc.GetPhotoPath(userId, "Picture", "jpg"));
                ComFunc.Base64StringToImage(arg.strBase64PhotoData,photoPath);
                ComFunc.Base64StringToFile(arg.strBase64FeatureData,featurePath);
                int featureId = 0;
@@ -121,14 +122,12 @@ namespace SND.KQ.BL
                }
                if (featureId != 0)
                {
-                  ret = DAccess.UpdateUserInfoFeatureInfo(arg.lUserID.ToString(), featureId);
+                   ret = DAccess.UpdateUserInfoFeatureInfo(userId, featureId);
                   if(ret==0)
                   {
                       isSucc=false;
                   }
                }
-
-               
             }
 
             if (CompleteHandler != null)

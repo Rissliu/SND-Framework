@@ -118,6 +118,20 @@ namespace SND.KQ.BL
             return string.Format("{0}_{1}_{2}{3}{4}{5}{6}{7}.{8}", userId, type, date.Year, date.Month, date.Day, date.Hour, date.Minute, date.Second,ext);
         }
 
-
+        public static string GetUserIdString(string id)
+        {
+            string UserId = "";
+            if (id.Length >= 4)
+                return id;
+            else
+            {
+                for (int i = 0; i < 4 - id.Length; i++)
+                {
+                    UserId += "0";
+                }
+                UserId += id;
+                return UserId;
+            }
+        }
     }
 }

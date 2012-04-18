@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.minfoLable = new System.Windows.Forms.Label();
             this.mBtnConfirm = new System.Windows.Forms.Button();
             this.mUserInfogroupBox = new System.Windows.Forms.GroupBox();
             this.btnSearch = new System.Windows.Forms.Button();
@@ -44,7 +45,6 @@
             this.mTextUserId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.mTxtUserName = new System.Windows.Forms.TextBox();
-            this.minfoLable = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.mUserInfogroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -61,6 +61,15 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(567, 345);
             this.panel1.TabIndex = 0;
+            // 
+            // minfoLable
+            // 
+            this.minfoLable.Location = new System.Drawing.Point(39, 280);
+            this.minfoLable.Name = "minfoLable";
+            this.minfoLable.Size = new System.Drawing.Size(158, 23);
+            this.minfoLable.TabIndex = 2;
+            this.minfoLable.Text = "数据处理中，请稍等...";
+            this.minfoLable.Visible = false;
             // 
             // mBtnConfirm
             // 
@@ -116,7 +125,7 @@
             // mCombRank
             // 
             this.mCombRank.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.mCombRank.Font = new System.Drawing.Font("SimSun", 9F);
+            this.mCombRank.Font = new System.Drawing.Font("宋体", 9F);
             this.mCombRank.FormattingEnabled = true;
             this.mCombRank.Location = new System.Drawing.Point(352, 135);
             this.mCombRank.Name = "mCombRank";
@@ -135,7 +144,7 @@
             // mCombDept
             // 
             this.mCombDept.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.mCombDept.Font = new System.Drawing.Font("SimSun", 9F);
+            this.mCombDept.Font = new System.Drawing.Font("宋体", 9F);
             this.mCombDept.FormattingEnabled = true;
             this.mCombDept.Location = new System.Drawing.Point(53, 139);
             this.mCombDept.Name = "mCombDept";
@@ -154,7 +163,7 @@
             // mCombCopyType
             // 
             this.mCombCopyType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.mCombCopyType.Font = new System.Drawing.Font("SimSun", 9F);
+            this.mCombCopyType.Font = new System.Drawing.Font("宋体", 9F);
             this.mCombCopyType.FormattingEnabled = true;
             this.mCombCopyType.Location = new System.Drawing.Point(352, 87);
             this.mCombCopyType.Name = "mCombCopyType";
@@ -172,7 +181,7 @@
             // 
             // mTxtCardNum
             // 
-            this.mTxtCardNum.Font = new System.Drawing.Font("SimSun", 9F);
+            this.mTxtCardNum.Font = new System.Drawing.Font("宋体", 9F);
             this.mTxtCardNum.Location = new System.Drawing.Point(53, 91);
             this.mTxtCardNum.Name = "mTxtCardNum";
             this.mTxtCardNum.Size = new System.Drawing.Size(176, 21);
@@ -189,10 +198,9 @@
             // 
             // mTextUserId
             // 
-            this.mTextUserId.Font = new System.Drawing.Font("SimSun", 9F);
+            this.mTextUserId.Font = new System.Drawing.Font("宋体", 9F);
             this.mTextUserId.Location = new System.Drawing.Point(352, 45);
             this.mTextUserId.Name = "mTextUserId";
-            this.mTextUserId.ReadOnly = true;
             this.mTextUserId.Size = new System.Drawing.Size(176, 21);
             this.mTextUserId.TabIndex = 2;
             // 
@@ -207,20 +215,11 @@
             // 
             // mTxtUserName
             // 
-            this.mTxtUserName.Font = new System.Drawing.Font("SimSun", 9F);
+            this.mTxtUserName.Font = new System.Drawing.Font("宋体", 9F);
             this.mTxtUserName.Location = new System.Drawing.Point(53, 45);
             this.mTxtUserName.Name = "mTxtUserName";
             this.mTxtUserName.Size = new System.Drawing.Size(176, 21);
             this.mTxtUserName.TabIndex = 0;
-            // 
-            // minfoLable
-            // 
-            this.minfoLable.Location = new System.Drawing.Point(39, 280);
-            this.minfoLable.Name = "minfoLable";
-            this.minfoLable.Size = new System.Drawing.Size(158, 23);
-            this.minfoLable.TabIndex = 2;
-            this.minfoLable.Text = "数据处理中，请稍等...";
-            this.minfoLable.Visible = false;
             // 
             // MainForm
             // 

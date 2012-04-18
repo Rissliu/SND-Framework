@@ -83,7 +83,7 @@ namespace SND.KQ.Machines.DevInterface
                 {
                     this.mLastError = mDevObj.GetLastError();
                 }
-
+                return handle;
             }
             catch (Exception ex)
             {
